@@ -117,33 +117,40 @@ async function start_wall(){
   console.log(el.clientWidth);
   const factor = (el.clientWidth/ 1200);
   const dims = el.getBoundingClientRect();
-  const top_st = Math.floor((1 + 0.1*factor)* dims.top);
-  const left_st = Math.floor(0.65*(1-factor/10) * dims.left);
+  const top_st = Math.floor((1 + 0.1*factor)* (dims.top + window.scrollY));
+  const left_st = Math.floor(0.65*(1-factor/10) * (dims.left + window.scrollX));
   var root_el = document.getElementById("cont");
   var addendum = `
   <div style="display:block;position:absolute;top:`.concat(top_st.toString().concat('px')).concat(`;left:`.concat(left_st.toString().concat('px')).concat(`;width:90%;height:100%">
         <div class="image123" style="margin-left:6%;">
         <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
             <img src="./img/home.png"   />
+            <p style="font-size:0.5em">&nbsp;</p>
         </div>
         <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
             <img class="middle-img" src="./img/home.png" />
+            <p style="font-size:0.5em">&nbsp;</p>
         </div>
         <div style="float:left;margin-right:5px;width:`.concat(w.toString().concat('px')).concat(`">
             <img src="./img/home.png"   />
+            <p style="font-size:0.5em">&nbsp;</p>
         </div>
         <div style="float:left;margin-right:5px;width:`.concat(w.toString().concat('px')).concat(`">
             <img class="middle-img" src="./img/home.png" />
+            <p style="font-size:0.5em">&nbsp;</p>
         </div>
         <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
             <img src="./img/home.png"   />
+            <p style="font-size:0.5em">&nbsp;</p>
         </div>
         <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
             <img class="middle-img" src="./img/home.png" />
+            <p style="font-size:0.5em">&nbsp;</p>
         </div>
 
         <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
             <img class="middle-img" src="./img/home.png" />
+            <p style="font-size:0.5em">&nbsp;</p>
         </div>
     </div>
 
@@ -151,25 +158,32 @@ async function start_wall(){
 
         <div style="float:left;margin-right:5px;width:`.concat(w.toString().concat('px')).concat(`">
             <img src="./img/home.png"   />
+            <p style="font-size:0.5em">&nbsp;</p>
         </div>
         <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
             <img class="middle-img" src="./img/home.png" />
+            <p style="font-size:0.5em">&nbsp;</p>
         </div>
         <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
             <img src="./img/home.png"   />
+            <p style="font-size:0.5em">&nbsp;</p>
         </div>
         <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
             <img class="middle-img" src="./img/home.png" />
+            <p style="font-size:0.5em">&nbsp;</p>
         </div>
         <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
             <img src="./img/home.png"   />
+            <p style="font-size:0.5em">&nbsp;</p>
         </div>
         <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
             <img class="middle-img" src="./img/home.png" />
+            <p style="font-size:0.5em">&nbsp;</p>
         </div>
 
         <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
             <img class="middle-img" src="./img/home.png" />
+            <p style="font-size:0.5em">&nbsp;</p>
 
       </div>
     </div>
