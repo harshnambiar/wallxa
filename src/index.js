@@ -110,3 +110,97 @@ async function updateContract() {
     });
 }
 window.updateContract = updateContract;
+
+async function start_wall(){
+  var el = document.getElementById("wall");
+  var w = Math.floor((el.clientWidth)/7.5);
+  console.log(el.clientWidth);
+  const factor = (el.clientWidth/ 1200);
+  const dims = el.getBoundingClientRect();
+  const top_st = Math.floor((1 + 0.1*factor)* dims.top);
+  const left_st = Math.floor(0.65*(1-factor/10) * dims.left);
+  var root_el = document.getElementById("cont");
+  var addendum = `
+  <div style="display:block;position:absolute;top:`.concat(top_st.toString().concat('px')).concat(`;left:`.concat(left_st.toString().concat('px')).concat(`;width:90%;height:100%">
+        <div class="image123" style="margin-left:6%;">
+        <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
+            <img src="./img/home.png"   />
+        </div>
+        <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
+            <img class="middle-img" src="./img/home.png" />
+        </div>
+        <div style="float:left;margin-right:5px;width:`.concat(w.toString().concat('px')).concat(`">
+            <img src="./img/home.png"   />
+        </div>
+        <div style="float:left;margin-right:5px;width:`.concat(w.toString().concat('px')).concat(`">
+            <img class="middle-img" src="./img/home.png" />
+        </div>
+        <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
+            <img src="./img/home.png"   />
+        </div>
+        <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
+            <img class="middle-img" src="./img/home.png" />
+        </div>
+
+        <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
+            <img class="middle-img" src="./img/home.png" />
+        </div>
+    </div>
+
+    <div class="image123" style="margin-left:6%;">
+
+        <div style="float:left;margin-right:5px;width:`.concat(w.toString().concat('px')).concat(`">
+            <img src="./img/home.png"   />
+        </div>
+        <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
+            <img class="middle-img" src="./img/home.png" />
+        </div>
+        <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
+            <img src="./img/home.png"   />
+        </div>
+        <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
+            <img class="middle-img" src="./img/home.png" />
+        </div>
+        <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
+            <img src="./img/home.png"   />
+        </div>
+        <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
+            <img class="middle-img" src="./img/home.png" />
+        </div>
+
+        <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
+            <img class="middle-img" src="./img/home.png" />
+
+      </div>
+    </div>
+    <div class="image123" style="margin-left:6%;">
+
+        <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
+            <img src="./img/home.png"   />
+        </div>
+        <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
+            <img class="middle-img" src="./img/home.png" />
+        </div>
+        <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
+            <img src="./img/home.png"   />
+        </div>
+        <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
+            <img class="middle-img" src="./img/home.png" />
+        </div>
+        <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
+            <img src="./img/home.png"   />
+        </div>
+        <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
+            <img class="middle-img" src="./img/home.png" />
+        </div>
+
+        <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
+            <img class="middle-img" src="./img/home.png" />
+
+      </div>
+    </div>
+  `)))))))))))))))))))))));
+  root_el.innerHTML = root_el.innerHTML + addendum;
+
+}
+window.start_wall = start_wall;
