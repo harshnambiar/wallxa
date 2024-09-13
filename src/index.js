@@ -75,24 +75,96 @@ async function startApp(provider) {
 }
 
 
-async function callContract() {
+async function callForPrice() {
   const web3 = new Web3(window.ethereum);
   const abiInstance = ABI.abi;
   const contract = new web3.eth.Contract(
                                     abiInstance,
-                     "0xddFA5fE9a651eF1411605dA65D73971429841280");
+                     "0x0c2e875b4d88775283ca0e7dc6cf0fadb06fef95");
   
   const myAddress = localStorage.getItem("acct");
-  contract.methods.fetch()
+  contract.methods.retrieve_base_price()
     .call({from: myAddress})
     .then((result) => {
         console.log('Return Value:', result);
+        localStorage.setItem("baseprice", result);
     })
     .catch((error) => {
         console.error('Call Error:', error);
     });
 }
-window.callContract = callContract;
+window.callForPrice = callForPrice;
+
+async function callForPings() {
+  const web3 = new Web3(window.ethereum);
+  const abiInstance = ABI.abi;
+  const contract = new web3.eth.Contract(
+                                    abiInstance,
+                     "0x0c2e875b4d88775283ca0e7dc6cf0fadb06fef95");
+
+  const myAddress = localStorage.getItem("acct");
+  contract.methods.fetch_pings()
+    .call({from: myAddress})
+    .then((result) => {
+        console.log('Return Value:', result);
+    })
+    .catch((error) => {
+        console.error('You are not Tier 2+ Renter');
+    });
+}
+window.callForPings = callForPings;
+
+async function callForUrlActive() {
+  const web3 = new Web3(window.ethereum);
+  const abiInstance = ABI.abi;
+  const contract = new web3.eth.Contract(
+                                    abiInstance,
+                     "0x0c2e875b4d88775283ca0e7dc6cf0fadb06fef95");
+
+  const myAddress = localStorage.getItem("acct");
+  contract.methods.retrieve_active_urls()
+    .call({from: myAddress})
+    .then((result) => {
+        var i = 0;
+        var res = [];
+        while (i < 21){
+          var el = decodeURIComponent(result[i]);
+          res.push(el);
+          i++;
+        }
+        console.log('Return Value:', res);
+    })
+    .catch((error) => {
+        console.error('Call Error:', error);
+    });
+}
+window.callForUrlActive = callForUrlActive;
+
+async function callForPicActive() {
+  const web3 = new Web3(window.ethereum);
+  const abiInstance = ABI.abi;
+  const contract = new web3.eth.Contract(
+                                    abiInstance,
+                     "0x0c2e875b4d88775283ca0e7dc6cf0fadb06fef95");
+
+  const myAddress = localStorage.getItem("acct");
+  contract.methods.retrieve_active_pics()
+    .call({from: myAddress})
+    .then((result) => {
+        var i = 0;
+        var res = [];
+        while (i < 21){
+          var el = decodeURIComponent(result[i]);
+          res.push(el);
+          i++;
+        }
+        console.log('Return Value:', res);
+    })
+    .catch((error) => {
+        console.error('Call Error:', error);
+    });
+}
+window.callForPicActive = callForPicActive;
 
 
 async function updateContract() {
@@ -100,11 +172,14 @@ async function updateContract() {
   const abiInstance = ABI.abi;
   const contract = new web3.eth.Contract(
                                     abiInstance,
-                     "0xddFA5fE9a651eF1411605dA65D73971429841280");
+                     "0x0c2e875b4d88775283ca0e7dc6cf0fadb06fef95");
   
   const myAddress = localStorage.getItem("acct");
-  contract.methods.increment()
-    .send({from: myAddress})
+  const pay = Number(localStorage.getItem("baseprice"));
+  const encoded_url = encodeURIComponent("https://github.com/authentixFuel");
+  const encoded_pic = encodeURIComponent("https://avatars.githubusercontent.com/u/165373044?v=4");
+  contract.methods.rent(3, encoded_url, encoded_pic)
+    .send({from: myAddress , value: 3* pay, gas: '1000000', gasPrice:1000000000})
     .catch((error) => {
         console.error('Call Error:', error);
     });
@@ -124,7 +199,7 @@ async function start_wall(){
   <div style="display:block;position:absolute;top:`.concat(top_st.toString().concat('px')).concat(`;left:`.concat(left_st.toString().concat('px')).concat(`;width:90%;height:100%">
         <div class="image123" style="margin-left:6%;">
         <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
-            <img src="./img/home.png"   />
+            <img class="middle-img" src="./img/home.png" />
             <p style="font-size:0.5em">&nbsp;</p>
         </div>
         <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
