@@ -199,32 +199,32 @@ async function start_wall(){
   <div style="display:block;position:absolute;top:`.concat(top_st.toString().concat('px')).concat(`;left:`.concat(left_st.toString().concat('px')).concat(`;width:90%;height:100%">
         <div class="image123" style="margin-left:6%;">
         <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
-            <img class="middle-img" src="./img/home.png" />
+            <img class="middle-img" src="./img/gold.png" />
             <p style="font-size:0.5em">&nbsp;</p>
         </div>
         <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
-            <img class="middle-img" src="./img/home.png" />
+            <img class="middle-img" src="./img/gold.png" />
             <p style="font-size:0.5em">&nbsp;</p>
         </div>
         <div style="float:left;margin-right:5px;width:`.concat(w.toString().concat('px')).concat(`">
-            <img src="./img/home.png"   />
+            <img src="./img/gold.png"   />
             <p style="font-size:0.5em">&nbsp;</p>
         </div>
         <div style="float:left;margin-right:5px;width:`.concat(w.toString().concat('px')).concat(`">
-            <img class="middle-img" src="./img/home.png" />
+            <img class="middle-img" src="./img/gold.png" />
             <p style="font-size:0.5em">&nbsp;</p>
         </div>
         <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
-            <img src="./img/home.png"   />
+            <img src="./img/gold.png"   />
             <p style="font-size:0.5em">&nbsp;</p>
         </div>
         <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
-            <img class="middle-img" src="./img/home.png" />
+            <img class="middle-img" src="./img/gold.png" />
             <p style="font-size:0.5em">&nbsp;</p>
         </div>
 
         <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
-            <img class="middle-img" src="./img/home.png" />
+            <img class="middle-img" src="./img/gold.png" />
             <p style="font-size:0.5em">&nbsp;</p>
         </div>
     </div>
@@ -232,32 +232,32 @@ async function start_wall(){
     <div class="image123" style="margin-left:6%;">
 
         <div style="float:left;margin-right:5px;width:`.concat(w.toString().concat('px')).concat(`">
-            <img src="./img/home.png"   />
+            <img src="./img/silver.png"   />
             <p style="font-size:0.5em">&nbsp;</p>
         </div>
         <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
-            <img class="middle-img" src="./img/home.png" />
+            <img class="middle-img" src="./img/silver.png" />
             <p style="font-size:0.5em">&nbsp;</p>
         </div>
         <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
-            <img src="./img/home.png"   />
+            <img src="./img/silver.png"   />
             <p style="font-size:0.5em">&nbsp;</p>
         </div>
         <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
-            <img class="middle-img" src="./img/home.png" />
+            <img class="middle-img" src="./img/silver.png" />
             <p style="font-size:0.5em">&nbsp;</p>
         </div>
         <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
-            <img src="./img/home.png"   />
+            <img src="./img/silver.png"   />
             <p style="font-size:0.5em">&nbsp;</p>
         </div>
         <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
-            <img class="middle-img" src="./img/home.png" />
+            <img class="middle-img" src="./img/silver.png" />
             <p style="font-size:0.5em">&nbsp;</p>
         </div>
 
         <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
-            <img class="middle-img" src="./img/home.png" />
+            <img class="middle-img" src="./img/silver.png" />
             <p style="font-size:0.5em">&nbsp;</p>
 
       </div>
@@ -265,26 +265,26 @@ async function start_wall(){
     <div class="image123" style="margin-left:6%;">
 
         <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
-            <img src="./img/home.png"   />
+            <img src="./img/bronze.png"   />
         </div>
         <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
-            <img class="middle-img" src="./img/home.png" />
+            <img class="middle-img" src="./img/bronze.png" />
         </div>
         <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
-            <img src="./img/home.png"   />
+            <img src="./img/bronze.png"   />
         </div>
         <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
-            <img class="middle-img" src="./img/home.png" />
+            <img class="middle-img" src="./img/bronze.png" />
         </div>
         <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
-            <img src="./img/home.png"   />
+            <img src="./img/bronze.png"   />
         </div>
         <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
-            <img class="middle-img" src="./img/home.png" />
+            <img class="middle-img" src="./img/bronze.png" />
         </div>
 
         <div style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`">
-            <img class="middle-img" src="./img/home.png" />
+            <img class="middle-img" src="./img/bronze.png" />
 
       </div>
     </div>
@@ -293,3 +293,51 @@ async function start_wall(){
 
 }
 window.start_wall = start_wall;
+
+async function go_home(){
+  window.location.href = "./";
+}
+window.go_home = go_home;
+
+async function go_about(){
+  window.location.href = "./about.html";
+}
+window.go_about = go_about;
+
+async function go_pings(){
+  window.location.href = "./pings.html";
+}
+window.go_pings = go_pings;
+
+async function load_pings(){
+  const add = localStorage.getItem("acct");
+  if (add == ""){
+    console.log("You are not connected to a wallet");
+    window.location.href = "./";
+  }
+  else {
+    const web3 = new Web3(window.ethereum);
+    const abiInstance = ABI.abi;
+    const contract = new web3.eth.Contract(
+                                      abiInstance,
+                      "0x0c2e875b4d88775283ca0e7dc6cf0fadb06fef95");
+
+
+    contract.methods.fetch_pings()
+      .call({from: add})
+      .then((result) => {
+          console.log('Return Value:', result);
+      })
+      .catch((error) => {
+          console.error('You are not Tier 2+ Renter');
+      });
+      var el = document.getElementById("ping_conf");
+      const cur_width = Number((el.style.width).replace("%", ""));
+      const factor = (1600 / screen.width);
+      el.style.width = (cur_width * factor).toString().concat("%");
+
+  }
+}
+window.load_pings = load_pings;
+
+

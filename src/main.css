@@ -103,8 +103,9 @@
   .pageHeader .walletBtn {
     display: inline-block;
     text-decoration: none;
-    background-color: var(--primaryColor);
-    color: white;
+    background-color: aqua;
+    font-family: "Poppins";
+    color: black;
     padding: 0.3em 1.3em;
     border-radius: 0.6em;
     font-size: 1.4em;
@@ -117,10 +118,7 @@
     vertical-align: middle;
     margin-right: 0.5em;
   }
-  .pageHeader .walletBtn:hover {
-    background-color: transparent;
-    border: 1px solid var(--primaryColor);
-  }
+
   .pageHeader .languageBtn {
     border: 1px solid var(--primaryColor);
     background-color: transparent;
