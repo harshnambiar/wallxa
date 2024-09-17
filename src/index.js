@@ -2,6 +2,16 @@ import detectEthereumProvider from "@metamask/detect-provider"
 import Web3 from "web3"; 
 import ABI from './abi.json'
 
+if (typeof window.ethereum  !== 'undefined'){
+  window.ethereum.on('accountsChanged', (accounts) => {
+    console.log('account changed');
+    localStorage.setItem("acct", accounts[0]);
+    window.location.href= "./";
+  });
+}
+
+
+
 async function connect(code) {
     
   const provider = await detectEthereumProvider()
@@ -71,6 +81,10 @@ async function startApp(provider) {
   console.log(bal);
   console.log(account);
   localStorage.setItem("acct",account.toString());
+
+  document.getElementById("logbut").textContent = account.substring(0,7).concat("..");
+
+
   }
 }
 
@@ -80,7 +94,7 @@ async function callForPrice() {
   const abiInstance = ABI.abi;
   const contract = new web3.eth.Contract(
                                     abiInstance,
-                     "0x0c2e875b4d88775283ca0e7dc6cf0fadb06fef95");
+                     "0x6a5fef6a0d30e124f4ffcec677ae712e8964a6cb");
   
   const myAddress = localStorage.getItem("acct");
   contract.methods.retrieve_base_price()
@@ -100,7 +114,7 @@ async function callForPings() {
   const abiInstance = ABI.abi;
   const contract = new web3.eth.Contract(
                                     abiInstance,
-                     "0x0c2e875b4d88775283ca0e7dc6cf0fadb06fef95");
+                     "0x6a5fef6a0d30e124f4ffcec677ae712e8964a6cb");
 
   const myAddress = localStorage.getItem("acct");
   contract.methods.fetch_pings()
@@ -119,7 +133,7 @@ async function callForUrlActive() {
   const abiInstance = ABI.abi;
   const contract = new web3.eth.Contract(
                                     abiInstance,
-                     "0x0c2e875b4d88775283ca0e7dc6cf0fadb06fef95");
+                     "0x6a5fef6a0d30e124f4ffcec677ae712e8964a6cb");
 
   const myAddress = localStorage.getItem("acct");
   contract.methods.retrieve_active_urls()
@@ -145,7 +159,7 @@ async function callForPicActive() {
   const abiInstance = ABI.abi;
   const contract = new web3.eth.Contract(
                                     abiInstance,
-                     "0x0c2e875b4d88775283ca0e7dc6cf0fadb06fef95");
+                     "0x6a5fef6a0d30e124f4ffcec677ae712e8964a6cb");
 
   const myAddress = localStorage.getItem("acct");
   contract.methods.retrieve_active_pics()
@@ -166,20 +180,94 @@ async function callForPicActive() {
 }
 window.callForPicActive = callForPicActive;
 
+async function callForNameActive() {
+  const web3 = new Web3(window.ethereum);
+  const abiInstance = ABI.abi;
+  const contract = new web3.eth.Contract(
+                                    abiInstance,
+                     "0x6a5fef6a0d30e124f4ffcec677ae712e8964a6cb");
+
+  const myAddress = localStorage.getItem("acct");
+  contract.methods.retrieve_active_names()
+    .call({from: myAddress})
+    .then((result) => {
+        var i = 0;
+        var res = [];
+        while (i < 21){
+          var el = decodeURIComponent(result[i]);
+          res.push(el);
+          i++;
+        }
+        console.log('Return Value:', res);
+    })
+    .catch((error) => {
+        console.error('Call Error:', error);
+    });
+}
+window.callForNameActive = callForNameActive;
+
+async function callForAddressActive() {
+  const web3 = new Web3(window.ethereum);
+  const abiInstance = ABI.abi;
+  const contract = new web3.eth.Contract(
+                                    abiInstance,
+                     "0x6a5fef6a0d30e124f4ffcec677ae712e8964a6cb");
+
+  const myAddress = localStorage.getItem("acct");
+  contract.methods.retrieve_acitve_owners()
+    .call({from: myAddress})
+    .then((result) => {
+        var i = 0;
+        var res = [];
+        while (i < 21){
+          var el = decodeURIComponent(result[i]);
+          res.push(el);
+          i++;
+        }
+        console.log('Return Value:', res);
+    })
+    .catch((error) => {
+        console.error('Call Error:', error);
+    });
+}
+window.callForAddressActive = callForAddressActive;
+
+async function callForMaxTier() {
+  const web3 = new Web3(window.ethereum);
+  const abiInstance = ABI.abi;
+  const contract = new web3.eth.Contract(
+                                    abiInstance,
+                     "0x6a5fef6a0d30e124f4ffcec677ae712e8964a6cb");
+
+  const myAddress = localStorage.getItem("acct");
+  contract.methods.fetch_max_tier()
+    .call({from: myAddress})
+    .then((result) => {
+
+        console.log('Return Value:', result);
+    })
+    .catch((error) => {
+        console.error('Call Error:', error);
+    });
+}
+window.callForMaxTier = callForMaxTier;
+
+
 
 async function updateContract() {
   const web3 = new Web3(window.ethereum);
   const abiInstance = ABI.abi;
   const contract = new web3.eth.Contract(
                                     abiInstance,
-                     "0x0c2e875b4d88775283ca0e7dc6cf0fadb06fef95");
+                     "0x6a5fef6a0d30e124f4ffcec677ae712e8964a6cb");
   
   const myAddress = localStorage.getItem("acct");
   const pay = Number(localStorage.getItem("baseprice"));
-  const encoded_url = encodeURIComponent("https://github.com/authentixFuel");
-  const encoded_pic = encodeURIComponent("https://avatars.githubusercontent.com/u/165373044?v=4");
-  contract.methods.rent(3, encoded_url, encoded_pic)
-    .send({from: myAddress , value: 3* pay, gas: '1000000', gasPrice:1000000000})
+  console.log(pay);
+  const encoded_url = encodeURIComponent("https://www.pokemon.com/us");
+  const encoded_pic = encodeURIComponent("https://pokemonletsgo.pokemon.com/assets/img/common/char-pikachu.png");
+  contract.methods.rent(11, "pokemon", encoded_url, encoded_pic)
+    .send({from: myAddress , value: 2* pay, gas: '1000000', gasPrice:1000000000})
     .catch((error) => {
         console.error('Call Error:', error);
     });
@@ -187,6 +275,11 @@ async function updateContract() {
 window.updateContract = updateContract;
 
 async function start_wall(){
+
+  if (localStorage.getItem("acct")){
+    const ac = localStorage.getItem("acct");
+    document.getElementById("logbut").textContent =  ac.substring(0,7).concat("..");
+  }
   var el = document.getElementById("wall");
   var w = Math.floor((el.clientWidth)/7.5);
   console.log(el.clientWidth);
@@ -320,24 +413,90 @@ async function load_pings(){
     const abiInstance = ABI.abi;
     const contract = new web3.eth.Contract(
                                       abiInstance,
-                      "0x0c2e875b4d88775283ca0e7dc6cf0fadb06fef95");
+                      "0x6a5fef6a0d30e124f4ffcec677ae712e8964a6cb");
 
 
-    contract.methods.fetch_pings()
-      .call({from: add})
-      .then((result) => {
-          console.log('Return Value:', result);
-      })
-      .catch((error) => {
-          console.error('You are not Tier 2+ Renter');
-      });
+    const res = await contract.methods.fetch_max_tier()
+      .call({from: add});
+      console.log(res);
+      if (res >= 2){
+        const res2 = await contract.methods.fetch_pings()
+        .call({from: add});
+        const res5 = await contract.methods.fetch_ping_names()
+        .call({from: add});
+        var i = 0;
+        while (i < res2.length){
+          var added = res5[i].concat(" (").concat(res2[i].substring(0,10).concat("..")).concat(")");
+          document.getElementById("mypings").innerHTML = document.getElementById("mypings").innerHTML + `
+            <p>`.concat(added).concat(`</p><br/>
+          `);
+            i++;
+        }
+        if (res2.length == 0){
+          document.getElementById("mypings").textContent = "No Pings Yet. Such empty, much wow.";
+        }
+      }
+      else {
+        document.getElementById("bod").innerHTML = `<br/><br/>
+          <div style="color: aqua;font-size: 2em;"> This feature is only available for the Silver and Gold Tier. </div>
+        `;
+        return;
+      }
       var el = document.getElementById("ping_conf");
       const cur_width = Number((el.style.width).replace("%", ""));
       const factor = (1600 / screen.width);
       el.style.width = (cur_width * factor).toString().concat("%");
+      if (res == 2){
+        document.getElementById("ping_cont").innerHTML = `
+          <div style = "color:red;font-size: 1.1em">Locked. This is a Gold Tier Feature</div>
+        `;
+      }
+      else {
+        const res3 = await contract.methods.retrieve_active_names().call({from: add});
+        const res4 = await contract.methods.retrieve_acitve_owners().call({from: add});
+        var j = 0;
+        while (j < 14){
+          if (res4[j].toLowerCase() != add.toLowerCase() && res3[j] != ""){
+            console.log(res4[j].toLowerCase());
+            document.getElementById("ping").innerHTML = document.getElementById("ping").innerHTML + `
+              <option value="`.concat(res4[j].toLowerCase()).concat(`">`.concat(res3[j]).concat(`</option>
+            `));
+          }
+          j++;
+        }
+
+
+      }
+
 
   }
 }
 window.load_pings = load_pings;
+
+async function confirm_ping(){
+  const target = document.getElementById("ping").value;
+  if (target == "none"){
+    console.log("choose");
+  }
+  else {
+    console.log(target);
+    const web3 = new Web3(window.ethereum);
+    const abiInstance = ABI.abi;
+    const contract = new web3.eth.Contract(
+                                      abiInstance,
+                      "0x6a5fef6a0d30e124f4ffcec677ae712e8964a6cb");
+
+    const myAddress = localStorage.getItem("acct");
+
+    contract.methods.ping(target)
+      .send({from: myAddress , gas: '1000000', gasPrice:1000000000})
+      .catch((error) => {
+          console.error('Call Error:', error);
+      });
+  }
+}
+window.confirm_ping = confirm_ping;
+
+
 
 
