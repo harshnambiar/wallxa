@@ -12,7 +12,7 @@ if (typeof window.ethereum  !== 'undefined'){
 
 
 
-async function connect(code) {
+async function connect() {
     
   const provider = await detectEthereumProvider()
 
@@ -472,6 +472,17 @@ async function go_pings(){
 window.go_pings = go_pings;
 
 async function load_pings(){
+  var eth = window.ethereum;
+  if (eth && eth.accounts){
+    localStorage.setItem("acct", eth.accounts[0]);
+  }
+  else {
+    console.log("not logged in");
+    localStorage.setItem("acct", "");
+    await connect();
+    console.log(localStorage.getItem("acct"));
+  }
+  console.log("hi");
   const add = localStorage.getItem("acct");
   if (add == ""){
     console.log("You are not connected to a wallet");
@@ -597,11 +608,131 @@ window.rent_or_check = rent_or_check;
 
 async function load_details(){
   var url = window.location.toString();
-  var queryString = url.substring(url.indexOf('=') + 1);
-  console.log(queryString);
-  //document.getElementById("pimg").src = ""
+  var n = url.substring(url.indexOf('=') + 1);
+  console.log(n);
+  if (isNaN(parseInt(n))){
+    window.location.href = "./";
+  }
+  else if (parseInt(n) > 21 || parseInt(n) < 1) {
+    window.location.href = "./";
+  }
+  else {}
+
+  const web3 = new Web3(window.ethereum);
+  const abiInstance = ABI.abi;
+  const contract = new web3.eth.Contract(
+                                    abiInstance,
+                    "0x6a5fef6a0d30e124f4ffcec677ae712e8964a6cb");
+  var add = "";
+  var c_add = localStorage.getItem("acct");
+  if (c_add){
+    if (c_add.length > add.length){
+      add = c_add;
+    }
+  }
+  else {
+    add = "0xD0dC8A261Ad1B75A92C5e502AE10c3Fde042b879".toLowerCase();
+  }
+  const res = await contract.methods.retrieve_active_urls().call({from: add});
+  const res2 = await contract.methods.retrieve_active_pics().call({from: add});
+  const res3 = await contract.methods.retrieve_acitve_owners().call({from: add});
+  const res4 = await contract.methods.retrieve_active_names().call({from: add});
+
+  if (res4[n - 1] == ""){
+    window.location.href = "./rent.html?slot=".concat(n.toString());
+  }
+
+  const factor = (document.getElementById("wrap1").clientWidth / 672);
+  console.log(factor);
+  document.getElementById("pimg").width = Math.floor(document.getElementById("wrap1").clientWidth / (factor * 2.5));
+  document.getElementById("pimg").src = decodeURIComponent(res2[n-1]);
+  document.getElementById("url_val").textContent = decodeURIComponent(res[n - 1]);
+  document.getElementById("url_val").href = decodeURIComponent(res[n - 1]);
+  document.getElementById("add_val").textContent = res3[n - 1];
+  document.getElementById("ptit").textContent = res4[n - 1];
 }
 window.load_details = load_details;
+
+
+async function load_rent(){
+
+  var url = window.location.toString();
+  var n = url.substring(url.indexOf('=') + 1);
+  console.log(n);
+  if (isNaN(parseInt(n))){
+    window.location.href = "./";
+  }
+  else if (parseInt(n) > 21 || parseInt(n) < 1) {
+    window.location.href = "./";
+  }
+  else {
+    var el = document.getElementById("rent_conf");
+    const cur_width = Number((el.style.width).replace("%", ""));
+    const factor = (1600 / screen.width);
+    el.style.width = (cur_width * factor).toString().concat("%");
+  }
+
+  const web3 = new Web3(window.ethereum);
+  const abiInstance = ABI.abi;
+  const contract = new web3.eth.Contract(
+                                    abiInstance,
+                    "0x6a5fef6a0d30e124f4ffcec677ae712e8964a6cb");
+  var add = "";
+  var c_add = localStorage.getItem("acct");
+  if (c_add){
+    if (c_add.length > add.length){
+      add = c_add;
+      document.getElementById("logbut").textContent = add.substring(0,7).concat("..");
+    }
+  }
+  else {
+    add = "0xD0dC8A261Ad1B75A92C5e502AE10c3Fde042b879".toLowerCase();
+  }
+  const res = await contract.methods.retrieve_active_urls().call({from: add});
+  const res2 = await contract.methods.retrieve_active_pics().call({from: add});
+  const res3 = await contract.methods.retrieve_acitve_owners().call({from: add});
+  const res4 = await contract.methods.retrieve_active_names().call({from: add});
+
+  var tier = 0;
+  if (res4[n - 1] != ""){
+    window.location.href = "./details.html?slot=".concat(n.toString());
+  }
+  else {
+    if (n >= 1 && n < 8){
+      tier = 3;
+    }
+    else if (n >=8 && n < 15){
+      tier = 2;
+    }
+    else if (n >= 15 && n < 22){
+      tier = 1;
+    }
+    else {
+      tier = 4;
+    }
+    if (tier == 0 || tier == 4){
+      window.location.href = "./";
+    }
+    document.getElementById("slot").textContent = "Rent Slot ".concat(n.toString());
+  }
+
+
+  console.log(tier);
+  const res5 = await contract.methods.retrieve_base_price().call({from: add});
+  console.log(res5);
+
+  var eth = window.ethereum;
+  if (eth && eth.accounts){
+    localStorage("acct", eth.accounts[0]);
+  }
+  else {
+    console.log("not logged in");
+    localStorage.setItem("acct", "");
+    await connect();
+    console.log(localStorage.getItem("acct"));
+  }
+}
+window.load_rent = load_rent;
 
 
 
