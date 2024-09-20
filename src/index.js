@@ -6,7 +6,7 @@ if (typeof window.ethereum  !== 'undefined'){
   window.ethereum.on('accountsChanged', (accounts) => {
     console.log('account changed');
     localStorage.setItem("acct", accounts[0]);
-    window.location.href= "./";
+    window.location.reload();
   });
 }
 
@@ -291,32 +291,32 @@ async function start_wall(){
   var addendum = `
   <div style="display:block;position:absolute;top:`.concat(top_st.toString().concat('px')).concat(`;left:`.concat(left_st.toString().concat('px')).concat(`;width:90%;height:100%">
         <div class="image123" style="margin-left:6%;">
-        <div id="g1" style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(1)">
+        <div id="g11" style="cursor:pointer;float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(1)">
             <img id="g1" class="middle-img" src="./img/gold.png" />
             <p style="font-size:0.5em">&nbsp;</p>
         </div>
-        <div id="g22" style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(2)">
+        <div id="g22" style="cursor:pointer;float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(2)">
             <img id="g2" class="middle-img" src="./img/gold.png" />
             <p style="font-size:0.5em">&nbsp;</p>
         </div>
-        <div id="g33" style="float:left;margin-right:5px;width:`.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(3)">
+        <div id="g33" style="cursor:pointer;float:left;margin-right:5px;width:`.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(3)">
             <img id="g3" src="./img/gold.png"   />
             <p style="font-size:0.5em">&nbsp;</p>
         </div>
-        <div id="g44" style="float:left;margin-right:5px;width:`.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(4)">
+        <div id="g44" style="cursor:pointer;float:left;margin-right:5px;width:`.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(4)">
             <img id="g4" class="middle-img" src="./img/gold.png" />
             <p style="font-size:0.5em">&nbsp;</p>
         </div>
-        <div id="g55" style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(5)">
+        <div id="g55" style="cursor:pointer;float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(5)">
             <img id="g5" src="./img/gold.png"   />
             <p style="font-size:0.5em">&nbsp;</p>
         </div>
-        <div id="g66" style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(6)">
+        <div id="g66" style="cursor:pointer;float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(6)">
             <img id="g6" class="middle-img" src="./img/gold.png" />
             <p style="font-size:0.5em">&nbsp;</p>
         </div>
 
-        <div id="g77" style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(7)">
+        <div id="g77" style="cursor:pointer;float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(7)">
             <img id="g7" class="middle-img" src="./img/gold.png" />
             <p style="font-size:0.5em">&nbsp;</p>
         </div>
@@ -324,32 +324,32 @@ async function start_wall(){
 
     <div class="image123" style="margin-left:6%;">
 
-        <div id="s11" style="float:left;margin-right:5px;width:`.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(8)">
+        <div id="s11" style="cursor:pointer;float:left;margin-right:5px;width:`.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(8)">
             <img id="s1" src="./img/silver.png"   />
             <p style="font-size:0.5em">&nbsp;</p>
         </div>
-        <div id="s22" style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(9)">
+        <div id="s22" style="cursor:pointer;float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(9)">
             <img id="s2" class="middle-img" src="./img/silver.png" />
             <p style="font-size:0.5em">&nbsp;</p>
         </div>
-        <div id="s33" style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(10)">
+        <div id="s33" style="cursor:pointer;float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(10)">
             <img id="s3" src="./img/silver.png"   />
             <p style="font-size:0.5em">&nbsp;</p>
         </div>
-        <div id="s44" style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(11)">
+        <div id="s44" style="cursor:pointer;float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(11)">
             <img id="s4" class="middle-img" src="./img/silver.png" />
             <p style="font-size:0.5em">&nbsp;</p>
         </div>
-        <div id="s55" style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(12)">
+        <div id="s55" style="cursor:pointer;float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(12)">
             <img id="s5" src="./img/silver.png"   />
             <p style="font-size:0.5em">&nbsp;</p>
         </div>
-        <div id="s66" style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(13)">
+        <div id="s66" style="cursor:pointer;float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(13)">
             <img id="s6" class="middle-img" src="./img/silver.png" />
             <p style="font-size:0.5em">&nbsp;</p>
         </div>
 
-        <div id="s77" style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(14)">
+        <div id="s77" style="cursor:pointer;float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(14)">
             <img id="s7" class="middle-img" src="./img/silver.png" />
             <p style="font-size:0.5em">&nbsp;</p>
 
@@ -357,26 +357,26 @@ async function start_wall(){
     </div>
     <div class="image123" style="margin-left:6%;">
 
-        <div id="b11" style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(15)">
+        <div id="b11" style="cursor:pointer;float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(15)">
             <img id="b1" src="./img/bronze.png"   />
         </div>
-        <div id="b22" style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(16)">
+        <div id="b22" style="cursor:pointer;float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(16)">
             <img id="b2" class="middle-img" src="./img/bronze.png" />
         </div>
-        <div id="b33" style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(17)">
+        <div id="b33" style="cursor:pointer;float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(17)">
             <img id="b3" src="./img/bronze.png"   />
         </div>
-        <div id="b44" style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(18)">
+        <div id="b44" style="cursor:pointer;float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(18)">
             <img id="b4" class="middle-img" src="./img/bronze.png" />
         </div>
-        <div id="b55" style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(19)">
+        <div id="b55" style="cursor:pointer;float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(19)">
             <img id="b5" src="./img/bronze.png"   />
         </div>
-        <div id="b66" style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(20)">
+        <div id="b66" style="cursor:pointer;float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(20)">
             <img id="b6" class="middle-img" src="./img/bronze.png" />
         </div>
 
-        <div id="b77" style="float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(21)">
+        <div id="b77" style="cursor:pointer;float:left;margin-right:5px;width: `.concat(w.toString().concat('px')).concat(`" onclick="rent_or_check(21)">
             <img id="b7" class="middle-img" src="./img/bronze.png" />
 
       </div>
@@ -400,6 +400,7 @@ async function start_wall(){
   }
   const res = await contract.methods.retrieve_active_urls().call({from: add});
   const res2 = await contract.methods.retrieve_active_pics().call({from: add});
+  const res3 = await contract.methods.retrieve_active_names().call({from: add});
 
   var i = 0;
   while (i < 7){
@@ -439,19 +440,51 @@ async function start_wall(){
   while (i < 7){
     var el1 = decodeURIComponent(res[14 + i]);
     var el2 = decodeURIComponent(res2[14 + i]);
+
     var im_val = "b".concat((i+1).toString());
     if (el1 != ""){
       document.getElementById(im_val).src = el2;
+
       if (document.getElementById(im_val).width > document.getElementById(im_val).height){
         document.getElementById(im_val).style.setProperty('width', document.getElementById(im_val).height.toString().concat("px"), 'important');
       }
       else {
         document.getElementById(im_val).style.setProperty('height', document.getElementById(im_val).width.toString().concat("px"), 'important');
       }
+
+
     }
     i++;
   }
 
+
+  i = 0;
+  while (i < 7){
+    var im_val = "g".concat((i+1).toString());
+    var div_val = "g".concat((i+1).toString()).concat((i+1).toString());
+    var el3 = decodeURIComponent(res3[i]);
+    checkImage(document.getElementById(im_val).src, div_val, el3);
+
+    i++;
+  }
+  i = 0;
+  while (i < 7){
+    var im_val = "s".concat((i+1).toString());
+    var div_val = "s".concat((i+1).toString()).concat((i+1).toString());
+    var el3 = decodeURIComponent(res3[7 + i]);
+    checkImage(document.getElementById(im_val).src, div_val, el3);
+
+    i++;
+  }
+  i = 0;
+  while (i < 7){
+    var im_val = "b".concat((i+1).toString());
+    var div_val = "b".concat((i+1).toString()).concat((i+1).toString());
+    var el3 = decodeURIComponent(res3[14 + i]);
+    checkImage(document.getElementById(im_val).src, div_val, el3);
+
+    i++;
+  }
 
 }
 window.start_wall = start_wall;
@@ -662,6 +695,9 @@ async function load_rent(){
   if (isNaN(parseInt(n))){
     window.location.href = "./";
   }
+  else if (parseInt(n) != parseFloat(n)){
+    window.location.href = "./";
+  }
   else if (parseInt(n) > 21 || parseInt(n) < 1) {
     window.location.href = "./";
   }
@@ -718,8 +754,7 @@ async function load_rent(){
 
 
   console.log(tier);
-  const res5 = await contract.methods.retrieve_base_price().call({from: add});
-  console.log(res5);
+
 
   var eth = window.ethereum;
   if (eth && eth.accounts){
@@ -734,6 +769,105 @@ async function load_rent(){
 }
 window.load_rent = load_rent;
 
+async function confirm_rent(){
+  var url = window.location.toString();
+  var n = url.substring(url.indexOf('=') + 1);
+  console.log(n);
+  if (isNaN(parseInt(n))){
+    window.location.href = "./";
+  }
+  else if (parseInt(n) != parseFloat(n)){
+    window.location.href = "./";
+  }
+  else if (parseInt(n) > 21 || parseInt(n) < 1) {
+    window.location.href = "./";
+  }
+  else {}
+  var add = "";
+  var c_add = localStorage.getItem("acct");
+  if (c_add){
+    if (c_add.length > add.length){
+      add = c_add;
+
+    }
+  }
+  else {
+    await connect();
+    add = localStorage.getItem("acct");
+  }
+  const web3 = new Web3(window.ethereum);
+  const abiInstance = ABI.abi;
+  const contract = new web3.eth.Contract(
+                                    abiInstance,
+                    "0x6a5fef6a0d30e124f4ffcec677ae712e8964a6cb");
+
+  const res = await contract.methods.retrieve_active_urls().call({from: add});
+  if (res[n - 1] != ""){
+    document.getElementById("res_box").textContent = "Error! Purchase Failed. Is this slot already rented?";
+  }
+  else {
+    const res2 = await contract.methods.retrieve_base_price().call({from: add});
+    console.log(res2);
+    const url_entry = document.getElementById("pweb").value;
+    const name_entry = document.getElementById("pname").value;
+    const pic_entry = document.getElementById("ppic").value;
+    var tier = 0;
+    if (n >= 1 && n < 8){
+      tier = 3;
+    }
+    else if (n >=8 && n < 15){
+      tier = 2;
+    }
+    else if (n >= 15 && n < 22){
+      tier = 1;
+    }
+    else {
+      tier = 4;
+    }
+    if (tier == 0 || tier == 4){
+      window.location.href = "./";
+    }
+    if (url_entry == "" || pic_entry == "" || name_entry == ""){
+      document.getElementById("res_box").textContent = "Error! All fields are mandatory!";
+    }
+    else {
+      const encoded_url = encodeURIComponent(url_entry);
+      const encoded_pic = encodeURIComponent(pic_entry);
+      const encoded_name = encodeURIComponent(name_entry);
+      const pay = tier*Number(res2);
+
+      try {
+        const res3 = await contract.methods.rent(parseInt(n), encoded_name, encoded_url, encoded_pic)
+                .send({from: add , value: pay, gas: '1000000', gasPrice:1000000000});
+        document.getElementById("res_box").textContent = "Slot rented successfully!";
+      }
+      catch (err){
+        console.log(err);
+        document.getElementById("res_box").textContent = "Error! Check if you don't have enough tokens of if the slot is already taken.";
+      }
 
 
+
+    }
+
+  }
+
+}
+window.confirm_rent = confirm_rent;
+
+
+
+var checkImage = function(url, el, name){
+    var s = document.createElement("IMG");
+    s.src = url
+    s.onerror = function(){
+  		console.log("file with "+url+" invalid");
+         document.getElementById(el).innerHTML = `
+          <div style="color:red;background-color:grey;width:40px;height:40px">`.concat(name).concat(`</div>
+        `);
+    }
+    s.onload = function(){
+        console.log("file with "+url+" valid");
+    }
+}
 
