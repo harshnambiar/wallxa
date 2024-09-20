@@ -463,7 +463,7 @@ async function start_wall(){
     var im_val = "g".concat((i+1).toString());
     var div_val = "g".concat((i+1).toString()).concat((i+1).toString());
     var el3 = decodeURIComponent(res3[i]);
-    checkImage(document.getElementById(im_val).src, div_val, el3);
+    checkImage(document.getElementById(im_val).src, div_val, el3, w, factor);
 
     i++;
   }
@@ -472,7 +472,7 @@ async function start_wall(){
     var im_val = "s".concat((i+1).toString());
     var div_val = "s".concat((i+1).toString()).concat((i+1).toString());
     var el3 = decodeURIComponent(res3[7 + i]);
-    checkImage(document.getElementById(im_val).src, div_val, el3);
+    checkImage(document.getElementById(im_val).src, div_val, el3, w, factor);
 
     i++;
   }
@@ -481,7 +481,7 @@ async function start_wall(){
     var im_val = "b".concat((i+1).toString());
     var div_val = "b".concat((i+1).toString()).concat((i+1).toString());
     var el3 = decodeURIComponent(res3[14 + i]);
-    checkImage(document.getElementById(im_val).src, div_val, el3);
+    checkImage(document.getElementById(im_val).src, div_val, el3, w, factor);
 
     i++;
   }
@@ -857,14 +857,16 @@ window.confirm_rent = confirm_rent;
 
 
 
-var checkImage = function(url, el, name){
+var checkImage = function(url, el, name, w, f){
     var s = document.createElement("IMG");
-    s.src = url
+    s.src = url;
     s.onerror = function(){
   		console.log("file with "+url+" invalid");
+        const fontsize = 2.00 * f;
+        console.log(fontsize);
          document.getElementById(el).innerHTML = `
-          <div style="color:red;background-color:grey;width:40px;height:40px">`.concat(name).concat(`</div>
-        `);
+          <div style="color:whitesmoke;font-size:`.concat(fontsize.toString()).concat(`em;display:flex;align-items:center; justify-content:center; background-image: linear-gradient(to right, blue, cyan);width:`.concat(w.toString()).concat(`px;height: `.concat(w.toString()).concat(`px">`.concat(name).concat(`</div>
+        `))));
     }
     s.onload = function(){
         console.log("file with "+url+" valid");
