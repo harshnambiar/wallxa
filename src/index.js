@@ -5,11 +5,36 @@ import ABI from './abi.json'
 if (typeof window.ethereum  !== 'undefined'){
   window.ethereum.on('accountsChanged', (accounts) => {
     console.log('account changed');
-    localStorage.setItem("acct", accounts[0]);
+    localStorage.setItem("acnty", accounts[0]);
     window.location.reload();
   });
 }
 
+function screen_check(){
+  var el = document.getElementById("wallbod");
+  var w = el.clientWidth;
+  if (w <= 700){
+    document.getElementById("wallbod").innerHTML = `
+     <div class="pageHeader homeHeader">
+      <a class="walletBtn" onclick="go_about();" style="cursor:pointer;">About</a>
+      <a class="walletBtn" onclick="go_home();" style="cursor:pointer;">Home</a>
+
+
+    </div>
+    <br/><br/>
+    <div class="homeWrapper">
+
+
+      <div class="homeText3">WallXa</div>
+      <div class="homeText">Now on the Taraxa Testnet</div><br/>
+      <div style="color: red; font-size: 1.3em;"> Since WallXa is all about the "Wall", it only supports desktop and similar large screen type devices. Please use any such device to access WallXa </div>
+      <br/>
+
+    `;
+    return false;
+  }
+  return true;
+}
 
 
 async function connect() {
@@ -47,18 +72,54 @@ async function connect() {
         }
         else {
             console.log(err);
+            document.getElementById("wallbod").innerHTML = `
+     <div class="pageHeader homeHeader">
+      <a class="walletBtn" onclick="go_about();" style="cursor:pointer;">About</a>
+      <a class="walletBtn" onclick="go_home();" style="cursor:pointer;">Home</a>
+
+
+    </div>
+    <br/><br/>
+    <div class="homeWrapper">
+
+
+      <div class="homeText3">WallXa</div>
+      <div class="homeText">Now on the Taraxa Testnet</div><br/>
+      <div style="color: red; font-size: 1.3em;"> Please install MetaMask. Make sure you allow it to connect to WallXa! </div>
+      <br/>
+
+    `;
         }
       }
     }
     await startApp(provider);
   } else {
-    console.log("Please install MetaMask!")
+    console.log("Please install MetaMask!");
+    document.getElementById("wallbod").innerHTML = `
+     <div class="pageHeader homeHeader">
+      <a class="walletBtn" onclick="go_about();" style="cursor:pointer;">About</a>
+      <a class="walletBtn" onclick="go_home();" style="cursor:pointer;">Home</a>
+
+
+    </div>
+    <br/><br/>
+    <div class="homeWrapper">
+
+
+      <div class="homeText3">WallXa</div>
+      <div class="homeText">Now on the Taraxa Testnet</div><br/>
+      <div style="color: red; font-size: 1.3em;"> Please install MetaMask. Make sure you allow it to connect to WallXa! </div>
+      <br/>
+
+    `;
+
   }
 
 
 
 }
 window.connect = connect;
+
 
 
 async function startApp(provider) {
@@ -80,7 +141,7 @@ async function startApp(provider) {
   const bal = await web3.eth.getBalance(account);
   console.log(bal);
   console.log(account);
-  localStorage.setItem("acct",account.toString());
+  localStorage.setItem("acnty",account.toString());
 
   document.getElementById("logbut").textContent = account.substring(0,7).concat("..");
 
@@ -96,7 +157,7 @@ async function callForPrice() {
                                     abiInstance,
                      "0x6a5fef6a0d30e124f4ffcec677ae712e8964a6cb");
   
-  const myAddress = localStorage.getItem("acct");
+  const myAddress = localStorage.getItem("acnty");
   contract.methods.retrieve_base_price()
     .call({from: myAddress})
     .then((result) => {
@@ -116,7 +177,7 @@ async function callForPings() {
                                     abiInstance,
                      "0x6a5fef6a0d30e124f4ffcec677ae712e8964a6cb");
 
-  const myAddress = localStorage.getItem("acct");
+  const myAddress = localStorage.getItem("acnty");
   contract.methods.fetch_pings()
     .call({from: myAddress})
     .then((result) => {
@@ -135,7 +196,7 @@ async function callForUrlActive() {
                                     abiInstance,
                      "0x6a5fef6a0d30e124f4ffcec677ae712e8964a6cb");
 
-  const myAddress = localStorage.getItem("acct");
+  const myAddress = localStorage.getItem("acnty");
   contract.methods.retrieve_active_urls()
     .call({from: myAddress})
     .then((result) => {
@@ -161,7 +222,7 @@ async function callForPicActive() {
                                     abiInstance,
                      "0x6a5fef6a0d30e124f4ffcec677ae712e8964a6cb");
 
-  const myAddress = localStorage.getItem("acct");
+  const myAddress = localStorage.getItem("acnty");
   contract.methods.retrieve_active_pics()
     .call({from: myAddress})
     .then((result) => {
@@ -187,7 +248,7 @@ async function callForNameActive() {
                                     abiInstance,
                      "0x6a5fef6a0d30e124f4ffcec677ae712e8964a6cb");
 
-  const myAddress = localStorage.getItem("acct");
+  const myAddress = localStorage.getItem("acnty");
   contract.methods.retrieve_active_names()
     .call({from: myAddress})
     .then((result) => {
@@ -213,7 +274,7 @@ async function callForAddressActive() {
                                     abiInstance,
                      "0x6a5fef6a0d30e124f4ffcec677ae712e8964a6cb");
 
-  const myAddress = localStorage.getItem("acct");
+  const myAddress = localStorage.getItem("acnty");
   contract.methods.retrieve_acitve_owners()
     .call({from: myAddress})
     .then((result) => {
@@ -239,7 +300,7 @@ async function callForMaxTier() {
                                     abiInstance,
                      "0x6a5fef6a0d30e124f4ffcec677ae712e8964a6cb");
 
-  const myAddress = localStorage.getItem("acct");
+  const myAddress = localStorage.getItem("acnty");
   contract.methods.fetch_max_tier()
     .call({from: myAddress})
     .then((result) => {
@@ -261,7 +322,7 @@ async function updateContract() {
                                     abiInstance,
                      "0x6a5fef6a0d30e124f4ffcec677ae712e8964a6cb");
   
-  const myAddress = localStorage.getItem("acct");
+  const myAddress = localStorage.getItem("acnty");
   const pay = Number(localStorage.getItem("baseprice"));
   console.log(pay);
   const encoded_url = encodeURIComponent("https://www.pokemon.com/us");
@@ -275,10 +336,17 @@ async function updateContract() {
 window.updateContract = updateContract;
 
 async function start_wall(){
-
-  if (localStorage.getItem("acct")){
-    const ac = localStorage.getItem("acct");
+  const ok_screen = screen_check();
+  if (!ok_screen){
+    return;
+  }
+  await connect();
+  if (localStorage.getItem("acnty")){
+    const ac = localStorage.getItem("acnty");
     document.getElementById("logbut").textContent =  ac.substring(0,7).concat("..");
+  }
+  else {
+    return;
   }
   var el = document.getElementById("wall");
   var w = Math.floor((el.clientWidth)/7.5);
@@ -389,7 +457,7 @@ async function start_wall(){
                                     abiInstance,
                     "0x6a5fef6a0d30e124f4ffcec677ae712e8964a6cb");
   var add = "";
-  var c_add = localStorage.getItem("acct");
+  var c_add = localStorage.getItem("acnty");
   if (c_add){
     if (c_add.length > add.length){
       add = c_add;
@@ -505,21 +573,25 @@ async function go_pings(){
 window.go_pings = go_pings;
 
 async function load_pings(){
+  const ok_screen = screen_check();
+  if (!ok_screen){
+    return;
+  }
   var eth = window.ethereum;
   if (eth && eth.accounts){
-    localStorage.setItem("acct", eth.accounts[0]);
+    localStorage.setItem("acnty", eth.accounts[0]);
   }
   else {
     console.log("not logged in");
-    localStorage.setItem("acct", "");
+    localStorage.setItem("acnty", "");
     await connect();
-    console.log(localStorage.getItem("acct"));
+    console.log(localStorage.getItem("acnty"));
   }
-  console.log("hi");
-  const add = localStorage.getItem("acct");
+  var add = localStorage.getItem("acnty");
   if (add == ""){
     console.log("You are not connected to a wallet");
-    window.location.href = "./";
+    //window.location.href = "./";
+    return;
   }
   else {
     const web3 = new Web3(window.ethereum);
@@ -599,7 +671,7 @@ async function confirm_ping(){
                                       abiInstance,
                       "0x6a5fef6a0d30e124f4ffcec677ae712e8964a6cb");
 
-    const myAddress = localStorage.getItem("acct");
+    const myAddress = localStorage.getItem("acnty");
 
     contract.methods.ping(target)
       .send({from: myAddress , gas: '1000000', gasPrice:1000000000})
@@ -617,7 +689,7 @@ async function rent_or_check(n){
                                     abiInstance,
                     "0x6a5fef6a0d30e124f4ffcec677ae712e8964a6cb");
   var add = "";
-  var c_add = localStorage.getItem("acct");
+  var c_add = localStorage.getItem("acnty");
   if (c_add){
     if (c_add.length > add.length){
       add = c_add;
@@ -640,6 +712,26 @@ window.rent_or_check = rent_or_check;
 
 
 async function load_details(){
+  const ok_screen = screen_check();
+  if (!ok_screen){
+    return;
+  }
+  var eth = window.ethereum;
+  if (eth && eth.accounts){
+    localStorage.setItem("acnty", eth.accounts[0]);
+  }
+  else {
+    console.log("not logged in");
+    localStorage.setItem("acnty", "");
+    await connect();
+    console.log(localStorage.getItem("acnty"));
+  }
+  var add = localStorage.getItem("acnty");
+  if (add == ""){
+    console.log("You are not connected to a wallet");
+    //window.location.href = "./";
+    return;
+  }
   var url = window.location.toString();
   var n = url.substring(url.indexOf('=') + 1);
   console.log(n);
@@ -656,8 +748,8 @@ async function load_details(){
   const contract = new web3.eth.Contract(
                                     abiInstance,
                     "0x6a5fef6a0d30e124f4ffcec677ae712e8964a6cb");
-  var add = "";
-  var c_add = localStorage.getItem("acct");
+  add = "";
+  var c_add = localStorage.getItem("acnty");
   if (c_add){
     if (c_add.length > add.length){
       add = c_add;
@@ -688,7 +780,26 @@ window.load_details = load_details;
 
 
 async function load_rent(){
-
+  const ok_screen = screen_check();
+  if (!ok_screen){
+    return;
+  }
+  var eth = window.ethereum;
+  if (eth && eth.accounts){
+    localStorage.setItem("acnty", eth.accounts[0]);
+  }
+  else {
+    console.log("not logged in");
+    localStorage.setItem("acnty", "");
+    await connect();
+    console.log(localStorage.getItem("acnty"));
+  }
+  var add = localStorage.getItem("acnty");
+  if (add == ""){
+    console.log("You are not connected to a wallet");
+    //window.location.href = "./";
+    return;
+  }
   var url = window.location.toString();
   var n = url.substring(url.indexOf('=') + 1);
   console.log(n);
@@ -713,8 +824,8 @@ async function load_rent(){
   const contract = new web3.eth.Contract(
                                     abiInstance,
                     "0x6a5fef6a0d30e124f4ffcec677ae712e8964a6cb");
-  var add = "";
-  var c_add = localStorage.getItem("acct");
+  add = "";
+  var c_add = localStorage.getItem("acnty");
   if (c_add){
     if (c_add.length > add.length){
       add = c_add;
@@ -758,13 +869,13 @@ async function load_rent(){
 
   var eth = window.ethereum;
   if (eth && eth.accounts){
-    localStorage("acct", eth.accounts[0]);
+    localStorage("acnty", eth.accounts[0]);
   }
   else {
     console.log("not logged in");
-    localStorage.setItem("acct", "");
+    localStorage.setItem("acnty", "");
     await connect();
-    console.log(localStorage.getItem("acct"));
+    console.log(localStorage.getItem("acnty"));
   }
 }
 window.load_rent = load_rent;
@@ -784,7 +895,7 @@ async function confirm_rent(){
   }
   else {}
   var add = "";
-  var c_add = localStorage.getItem("acct");
+  var c_add = localStorage.getItem("acnty");
   if (c_add){
     if (c_add.length > add.length){
       add = c_add;
@@ -793,7 +904,7 @@ async function confirm_rent(){
   }
   else {
     await connect();
-    add = localStorage.getItem("acct");
+    add = localStorage.getItem("acnty");
   }
   const web3 = new Web3(window.ethereum);
   const abiInstance = ABI.abi;
